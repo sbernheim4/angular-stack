@@ -2,7 +2,7 @@
 
 app.config(function ($stateProvider) {
 	$stateProvider.state('timer', {
-		url: '/timer',
+		url: '/fjaindlksnfjkldsa',
 		templateUrl: 'js/timer/timer.template.html',
 		controller: 'TimerCtrl'
 	});
