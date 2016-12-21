@@ -7,6 +7,10 @@ var port = 1337;
 // folder to serve public files --> css, img, etc
 app.use(express.static(path.join(__dirname, '/public')));
 
+app.get('/js/timer/timer.template.html', function(req, res) {
+	res.sendFile(path.join(__dirname, '/../browser/js/timer/timer.template.html'));
+});
+
 /*app.use(function (req, res, next) {
 	if (req.path !== '/browser/js/app.js'&&  path.extname(req.path).length > 0) {
 		console.log(req.path);
