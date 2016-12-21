@@ -3,10 +3,14 @@
 	<head>
 		<!-- Custom css style sheet -->
 		<link rel="stylesheet" href="index.css">
+
+		<!-- Include Angular from google cdn  -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+ 		<script type="text/javascript" src='index.js'> </script>
 	</head>
 
-	<body>
-		<p>above the ui-view part</p>
-		<p>below the ui-view part</p>
+	<body ng-app='PomodoroTimer'>
+		<p>{{message}}</p>
 	</body>
 </html>

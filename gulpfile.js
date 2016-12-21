@@ -7,7 +7,7 @@ gulp.task('generateCSS', function () {
 	return gulp.src('./browser/scss/index.scss')
 	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
 	.pipe(cleanCSS()) // minify the css file
-	.pipe(gulp.dest('./server/public')); // write the css file to ./server
+	.pipe(gulp.dest('./server/public/')); // write the css file to ./server
 });
 
 /* Watch files to have gulp tasks run automatically when saved */
