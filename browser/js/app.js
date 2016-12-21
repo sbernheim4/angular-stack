@@ -1,11 +1,9 @@
 'use strict'
-var app = angular.module('PomodoroTimer', []);
 
-app.controller('MainCtrl', function($scope) {
-	console.log('testing 1 2 3');
-	$scope.message = 'THIS IS AN ANGULAR MESSAGE';
-});
+// Register the angular app
+var app = angular.module('PomodoroTimer', ['ui.router']);
 
 app.config(function($locationProvider) {
+	// allow for real urls and not hashbang urls --> EX: /timer instead of /#timer
 	$locationProvider.html5Mode(true);
 });
