@@ -5,11 +5,15 @@ var app = express();
 var port = 1337;
 
 // folder to serve public files --> css, img, etc
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/js/timer/timer.template.html', function(req, res) {
-	res.sendFile(path.join(__dirname, '/../browser/js/timer/timer.template.html'));
-});
+/*
+ * serve all the files in ../browser/ staticlly as well --> Needed since the
+ * html template files must be served statically so that they can be accessed
+ * by the browser as well on a GET request
+ */
+app.use(express.static(path.join(__dirname, '../browser')));
+
 
 /*app.use(function (req, res, next) {
 	if (req.path !== '/browser/js/app.js'&&  path.extname(req.path).length > 0) {
