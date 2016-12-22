@@ -7,7 +7,7 @@ var babel = require('gulp-babel');
 var ngAnnotate = require('gulp-ng-annotate');
 var uglify = require('gulp-uglify');
 
-gulp.task('generateCSS', function () {
+gulp.task('buildCSS', function () {
 	// the source file of the scss is a main file which just imports all the separate scss files
 	return gulp.src('./browser/scss/index.scss')
 	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
@@ -30,7 +30,7 @@ gulp.task('buildJS', function() {
 
 /* Watch files to have gulp tasks run automatically when saved */
 gulp.task('watch', function() {
-	gulp.watch('./browser/scss/*', ['generateCSS']);
+	gulp.watch('./browser/scss/*', ['buildCSS']);
 	gulp.watch('./browser/js/**/*.js', ['buildJS']);
 });
 
