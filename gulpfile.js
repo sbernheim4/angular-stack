@@ -16,14 +16,15 @@ gulp.task('generateCSS', function () {
 });
 
 gulp.task('buildJS', function() {
+	// run this for .js files for all folders in browser/js/ for all js files in them
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
-	.pipe(sourcemaps.init())
-	.pipe(concat('main.js'))
-	.pipe(babel())
-	.pipe(ngAnnotate())
-	.pipe(uglify())
-	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest('./server/public'))
+	.pipe(sourcemaps.init()) // use sourcemaps
+	.pipe(concat('main.js')) // write all the files to a single file called main.js
+	.pipe(babel()) // run babel to use ES6 syntax
+	.pipe(ngAnnotate()) // not quite sure what this does
+	.pipe(uglify()) // minify the js
+	.pipe(sourcemaps.write('./')) // write the source map
+	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
 });
 
 
