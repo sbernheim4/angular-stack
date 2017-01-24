@@ -34,4 +34,3 @@ gulp.task('watch', function() {
 	gulp.watch('./browser/js/**/*.js', ['buildJS']);
 });
 
-gulp.task('default', ['watch']);
