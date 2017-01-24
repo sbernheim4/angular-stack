@@ -1,8 +1,9 @@
 'use strict';
-var path = require('path');
-var express = require('express');
-var app = express();
-var port = 1337;
+const path = require('path');
+const express = require('express');
+const app = express();
+const port = 1337;
+const bodyParser = require('body-parser');
 
 // folder to serve public files --> css, img, etc
 app.use(express.static(path.join(__dirname, 'public')));
