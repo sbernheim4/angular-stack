@@ -16,7 +16,6 @@ gulp.task('buildCSS', function () {
 });
 
 gulp.task('buildJS', function() {
-	// run this for .js files for all folders in browser/js/ for all js files in them
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
 	.pipe(sourcemaps.init()) // use sourcemaps
 	.pipe(concat('main.js')) // write all the files to a single file called main.js
@@ -34,3 +33,10 @@ gulp.task('watch', function() {
 	gulp.watch('./browser/js/**/*.js', ['buildJS']);
 });
 
+/*
+ * Defualt gulp task when `gulp` is run from the cli
+ *
+ * Run buildCSS and buildJS so the app is built/updated without requiring a save
+ * in one of the watched files to run the same tasks
+ */
+gulp.task('default', ['buildCSS', 'buildJS', 'watch']);

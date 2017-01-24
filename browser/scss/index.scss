@@ -1,9 +1,11 @@
 /* Use this file to import all other scss files. This file gets compiled by a
 gulp process */
 
-// Gloabal site wide settings here
-//-------------------------------------------
+// CSS Rest --> THIS MUST BE THE FIRST CSS IN THE FILE
+* {
+	margin: 0;
+	padding: 0;
+}
 
-// Import statements of other scss files
-//-------------------------------------------
+/* Import statements of other SCSS files */
 @import 'home';
