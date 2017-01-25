@@ -29,7 +29,7 @@ gulp.task('buildJS', function() {
 });
 
 gulp.task('buildHTML', function() {
-	// Need the .template.html since using just .html would then create a new 
+	// Need the .template.html since using just .html would then create a new
 	// file on each save
 	return gulp.src('./browser/js/**/*.template.html')
 	.pipe(htmlmin(
