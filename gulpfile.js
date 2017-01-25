@@ -8,13 +8,18 @@ const ngAnnotate = require('gulp-ng-annotate');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
+/* NOTE: This requires a chrome extention to work properly:
+	https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
+*/
+const livereload = require('gulp-livereload');
 
 gulp.task('buildCSS', function () {
 	// The source scss file is a main file which just imports all the separate scss files
 	return gulp.src('./browser/scss/index.scss')
 	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
 	.pipe(cleanCSS()) // minify the css file
-	.pipe(gulp.dest('./server/public/')); // write the css file to ./server
+	.pipe(gulp.dest('./server/public/')) // write the css file to ./server
+	.pipe(livereload()); // reload browser automatically
 });
 
 gulp.task('buildJS', function() {
@@ -26,6 +31,7 @@ gulp.task('buildJS', function() {
 	.pipe(uglify()) // minify the js
 	.pipe(sourcemaps.write('./')) // write the source map
 	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
+	.pipe(livereload()); // reload browser automatically
 });
 
 gulp.task('buildHTML', function() {
@@ -41,10 +47,12 @@ gulp.task('buildHTML', function() {
 		path.extname = '.min.html' // change file extention from .html to .min.html
 	}))
 	.pipe(gulp.dest('./browser/js'))
+	.pipe(livereload()); // reload browser automatically
 })
 
 /* Watch files to have gulp tasks run automatically when saved */
 gulp.task('watch', function() {
+	livereload.listen(); // reload browser automatically on save
 	gulp.watch('./browser/scss/*', ['buildCSS']);
 	gulp.watch('./browser/js/**/*.js', ['buildJS']);
 	gulp.watch('./browser/js/**/*.html', ['buildHTML'])
