@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * html template files must be served statically so that they can be accessed
  * by the browser on a GET request
  */
- app.use(express.static(path.join(__dirname, '../browser')));
+ app.use(express.static(path.join(__dirname, '../browser/')));
 
 // For any get request return the index.html file
 app.get('/*', function (req, res) {
