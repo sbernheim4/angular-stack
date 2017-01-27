@@ -12,6 +12,30 @@ Make sure the extension is running. The small circle of the chrome extension sho
 
 #What is this Repo
 
-This repo is an easy and quick way to get an angular site running. It uses AngularJS and its UI-Router for the front end and NodeJS/ExpressJS for the backend.
-Gulp is used to compile SCSS, to transpile ES6 JS and minify it along with HTML and allow for livereloading.
-It is essientially a very simple version of the MEAN stack without MongoDB.
+This repo is an easy and quick way to get an angular website running. It uses AngularJS and its UI-Router for the front end and NodeJS/ExpressJS for the backend.
+Gulp is used to compile SCSS, transpile ES6 JS and minify it along with HTML and allow for livereloading.
+It is essientially, a very simple version of the MEAN stack without MongoDB.
+
+# File Structure
+
+Below is the file structure for this stack. Each state goes in its own folder, and each folder contains the html, controller.js and state.js files. All the scss files go in the scss folder
+`
+|--app/
+|------browser/
+|----------js/
+|--------------angular_state --> (Each angular state goes in its own folder)
+|------------------stateName.state.js
+|------------------stateName.template.html
+|------------------stateName.controller.js
+|----------scss/ --> (All the scss files go here. index.scss imports all the other listed files)
+|--------------stateName.scss
+|--------------index.scss
+|------server/
+|----------public/ --> (Contains the gulp generated css and js files)
+|--------------index.css
+|--------------main.js
+|----------index.html
+|----------index.js --> (Runs the Express server)
+|------gulpfile.js
+|------package.json
+`
