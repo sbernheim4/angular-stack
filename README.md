@@ -19,6 +19,7 @@ It is essientially, a very simple version of the MEAN stack without MongoDB.
 # File Structure
 
 Below is the file structure for this stack. Each state goes in its own folder, and each folder contains the html, controller.js and state.js files. All the scss files go in the scss folder
+```
 |--app/
 |------browser/
 |----------js/
@@ -37,3 +38,4 @@ Below is the file structure for this stack. Each state goes in its own folder, a
 |----------index.js --> (Runs the Express server)
 |------gulpfile.js
 |------package.json
+```
