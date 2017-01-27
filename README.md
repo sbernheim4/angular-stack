@@ -23,17 +23,17 @@ Below is the file structure for this stack. Each state goes in its own folder, a
 |--app/
 |------browser/
 |------|---js/
-|------|---|---angular_state --> (Each angular state goes in its own folder)
-|------|---|-------stateName.state.js
-|------|---|-------stateName.template.html
-|------|---|-------stateName.controller.js
+|------|-------angular_state/ --> (Each angular state goes in its own folder)
+|------|-----------stateName.state.js
+|------|-----------stateName.template.html
+|------|-----------stateName.controller.js
 |------|---scss/ --> (All the scss files go here. index.scss imports all the other listed files)
-|------|---|---stateName.scss
-|------|---|---index.scss
+|------|-------stateName.scss
+|------|-------index.scss
 |------server/
 |------|---public/ --> (Contains the gulp generated css and js files)
-|------|---|---index.css
-|------|---|---main.js
+|------|-------index.css
+|------|-------main.js
 |------|---index.html
 |------|---index.js --> (Runs the Express server)
 |------gulpfile.js
