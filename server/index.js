@@ -5,7 +5,7 @@ const chalk = require('chalk');
 const express = require('express');
 const app = express();
 
-const port = 1337;
+const port = PROCESS.env.port || 1337;
 
 // folder to serve public files --> css, img, etc
 app.use(express.static(path.join(__dirname, 'public')));
