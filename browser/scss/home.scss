@@ -1,2 +1,18 @@
-section.home{
+.home{
+	width: 100vw;
+	height: 100vh;
+	background-image: url("http://placehold.it/1280x350");
+	background-repeat: no-repeat;
+
+	&__landing-page {
+		h1 {
+			text-align: center;
+		}
+
+		&__blurb {
+			padding-top: 60px;
+			padding-left: 30px;
+			width: 300px;
+		}
+	}
 }

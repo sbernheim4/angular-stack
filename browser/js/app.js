@@ -1,7 +1,7 @@
 'use strict'
 
 // Register the angular app
-var app = angular.module('APP_NAME_HERE', ['ui.router']);
+var app = angular.module('Edelman-Campaign', ['ui.router']);
 
 app.config(function($locationProvider, $urlRouterProvider) {
 	// allow for real urls and not hashbang urls --> EX: /timer instead of /#timer
