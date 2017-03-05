@@ -1,9 +1,8 @@
 .home{
 
 	&__landing-page {
-		width: 100vw;
-		height: 80vh;
-		background-color: #1f69c4;
+		height: 70vh;
+		background-color: #2f69c4;
 		text-align: center;
 		color: white;
 
@@ -22,9 +21,9 @@
 		margin: 0 auto;
 		max-width: 80%;
 		width: 800px;
-		padding-top: 100px;
+		padding: 100px 0;
 
-		h3 {
+		h2 {
 			padding-bottom: 30px;
 		}
 
@@ -45,6 +44,51 @@
 
 			&:hover {
 				background-color: rgb(50, 50, 50);
+			}
+		}
+	}
+
+	&__issues {
+		background-color: #1f69c4;
+
+		.container {
+			margin: 0 auto;
+			max-width: 80%;
+			width: 800px;
+			padding-top: 60px;
+			color: white;
+
+			h2 {
+				font-size: 30px;
+
+			}
+
+			.home__issues__flex-container {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+
+				div {
+					padding: 20px;
+					display: flex;
+					align-items: center;
+
+					img {
+
+					}
+
+					div {
+						display: block;
+
+						h3 {
+
+						}
+
+						p {
+							padding: 15px;
+						}
+					}
+				}
 			}
 		}
 	}
