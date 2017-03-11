@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "My angular stack",
   "main": "server/index.js",
+  "engines": {
+    "node": "6.9.4"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
-    "heroku-postbuild": "npm install; gulp buildProduction"
+    "postinstall": "gulp buildProduction"
   },
   "repository": {
     "type": "git",
