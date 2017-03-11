@@ -41,7 +41,6 @@
 		}
 	}
 
-
 	&__philosophy {
 		background-image: url("https://s3.amazonaws.com/edelmanforbrandeis/background-six.jpg");
 		background-size: cover;
@@ -111,7 +110,7 @@
 					max-width: 400px;
 					padding: 30px;
 					display: flex;
-					align-items: center;
+					justify-content: center;
 					flex-direction: column;
 
 					img {
