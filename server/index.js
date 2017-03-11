@@ -5,10 +5,16 @@ const chalk = require('chalk');
 const express = require('express');
 const app = express();
 
+const compression = require('compression');
+
 const port = process.env.PORT || 1337;
+const cacheTime = 86400000; // 24 hours cache time
+
+// Compress files before sending them
+app.use(compression());
 
 // folder to serve public files --> css, img, etc
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), {maxAge: cacheTime}));
 
 /*
  * Serve all the files in ../browser/ staticlly as well --> Needed since the
