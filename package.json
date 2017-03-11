@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server/index.js",
-    "postinstall": "gulp buildProduction"
+    "postinstall": "gulp buildProduction",
+    "start": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
