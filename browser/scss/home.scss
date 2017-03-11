@@ -98,6 +98,7 @@
 
 			.home__issues__flex-container {
 				display: flex;
+				justify-content: center;
 				align-items: flex-start;
 				flex-direction: row;
 
@@ -111,6 +112,7 @@
 					padding: 30px;
 					display: flex;
 					justify-content: center;
+					align-items: center;
 					flex-direction: column;
 
 					img {
