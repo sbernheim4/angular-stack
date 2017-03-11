@@ -89,7 +89,7 @@ gulp.task('watch', function() {
 	gulp.watch('./browser/js/**/*.html', ['buildHTML'])
 });
 
-gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buildJSProduction']);
+gulp.task('build', ['buildHTMLProduction', 'buildCSSProduction', 'buildJSProduction']);
 
 /*
  * Defualt gulp task when `gulp` is run from the cli

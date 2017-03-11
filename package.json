@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "gulp buildProduction",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+	"postinstall": "gulp build"
   },
   "repository": {
     "type": "git",
