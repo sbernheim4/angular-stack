@@ -8,10 +8,52 @@ const ngAnnotate = require('gulp-ng-annotate');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
+
 /* NOTE: This requires a chrome extention to work properly:
-	https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
-*/
+ * https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
+ */
 const livereload = require('gulp-livereload');
+
+/**********************************************************/
+/* Production Builds */
+
+gulp.task('buildCSSProduction', function () {
+	return gulp.src('./browser/scss/index.scss')
+	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
+	.pipe(cleanCSS()) // minify the css file
+	.pipe(gulp.dest('./server/public/')) // write the css file to ./server
+});
+
+gulp.task('buildJSProduction', function() {
+	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
+	.pipe(sourcemaps.init()) // use sourcemaps
+	.pipe(concat('main.js')) // write all the files to a single file called main.js
+	.pipe(babel()) // run babel to use ES6 syntax
+	.pipe(ngAnnotate()) // not quite sure what this does
+	.pipe(uglify()) // minify the js
+	.pipe(sourcemaps.write('./')) // write the source map
+	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
+});
+
+gulp.task('buildHTMLProduction', function() {
+	return gulp.src('./browser/js/**/*.template.html')
+	.pipe(htmlmin(
+		{
+			collapsewhitespace: true, // remove whitespace
+			removecomments: true      // remove comments
+		}))
+	.pipe(rename(function(path) {
+		path.extname = '.min.html' // change file extention from .html to .min.html
+	}))
+	.pipe(gulp.dest('./browser/js'))
+});
+
+gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buildJSProduction']);
+
+/**********************************************************/
+
+/**********************************************************/
+/* Development Builds */
 
 gulp.task('buildCSS', function () {
 	// The source scss file is a main file which just imports all the separate scss files
@@ -24,12 +66,8 @@ gulp.task('buildCSS', function () {
 
 gulp.task('buildJS', function() {
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
-	.pipe(sourcemaps.init()) // use sourcemaps
 	.pipe(concat('main.js')) // write all the files to a single file called main.js
 	.pipe(babel()) // run babel to use ES6 syntax
-	.pipe(ngAnnotate()) // not quite sure what this does
-	.pipe(uglify()) // minify the js
-	.pipe(sourcemaps.write('./')) // write the source map
 	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
 	.pipe(livereload()); // reload browser automatically
 });
@@ -40,7 +78,6 @@ gulp.task('buildHTML', function() {
 	return gulp.src('./browser/js/**/*.template.html')
 	.pipe(htmlmin(
 		{
-			collapseWhitespace: true, // remove whitespace
 			removeComments: true      // remove comments
 		}))
 	.pipe(rename(function(path) {
