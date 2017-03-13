@@ -19,33 +19,30 @@ const livereload = require('gulp-livereload');
 
 gulp.task('buildCSSProduction', function () {
 	return gulp.src('./browser/scss/index.scss')
-	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
-	.pipe(cleanCSS()) // minify the css file
-	.pipe(gulp.dest('./server/public/')) // write the css file to ./server
+		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
+		.pipe(cleanCSS()) // minify the css file
+		.pipe(gulp.dest('./server/public/')) // write the css file to ./server
 });
 
 gulp.task('buildJSProduction', function() {
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
-	.pipe(sourcemaps.init()) // use sourcemaps
-	.pipe(concat('main.js')) // write all the files to a single file called main.js
-	.pipe(babel()) // run babel to use ES6 syntax
-	.pipe(ngAnnotate()) // not quite sure what this does
-	.pipe(uglify()) // minify the js
-	.pipe(sourcemaps.write('./')) // write the source map
-	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
+		.pipe(sourcemaps.init()) // use sourcemaps
+		.pipe(concat('main.js')) // write all the files to a single file called main.js
+		.pipe(babel()) // run babel to use ES6 syntax
+		.pipe(ngAnnotate()) // not quite sure what this does
+		.pipe(uglify()) // minify the js
+		.pipe(sourcemaps.write('./')) // write the source map
+		.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
 });
+
 
 gulp.task('buildHTMLProduction', function() {
 	return gulp.src('./browser/js/**/*.template.html')
-	.pipe(htmlmin(
-		{
-			collapsewhitespace: true, // remove whitespace
-			removecomments: true      // remove comments
+		.pipe(htmlmin({collapseWhitespace: true, removecomments: true}))
+		.pipe(rename(function(path) {
+			path.extname = '.min.html' // change file extention from .html to .min.html
 		}))
-	.pipe(rename(function(path) {
-		path.extname = '.min.html' // change file extention from .html to .min.html
-	}))
-	.pipe(gulp.dest('./browser/js'))
+		.pipe(gulp.dest('./browser/js'))
 });
 
 gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buildJSProduction']);
@@ -58,33 +55,33 @@ gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buil
 gulp.task('buildCSS', function () {
 	// The source scss file is a main file which just imports all the separate scss files
 	return gulp.src('./browser/scss/index.scss')
-	.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
-	.pipe(cleanCSS()) // minify the css file
-	.pipe(gulp.dest('./server/public/')) // write the css file to ./server
-	.pipe(livereload()); // reload browser automatically
+		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
+		.pipe(cleanCSS()) // minify the css file
+		.pipe(gulp.dest('./server/public/')) // write the css file to ./server
+		.pipe(livereload()); // reload browser automatically
 });
 
 gulp.task('buildJS', function() {
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
-	.pipe(concat('main.js')) // write all the files to a single file called main.js
-	.pipe(babel()) // run babel to use ES6 syntax
-	.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
-	.pipe(livereload()); // reload browser automatically
+		.pipe(concat('main.js')) // write all the files to a single file called main.js
+		.pipe(babel()) // run babel to use ES6 syntax
+		.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
+		.pipe(livereload()); // reload browser automatically
 });
 
 gulp.task('buildHTML', function() {
 	// Need the .template.html since using just .html would then create a new
 	// file on each save
 	return gulp.src('./browser/js/**/*.template.html')
-	.pipe(htmlmin(
-		{
-			removeComments: true      // remove comments
+		.pipe(htmlmin(
+			{
+				removeComments: true      // remove comments
+			}))
+		.pipe(rename(function(path) {
+			path.extname = '.min.html' // change file extention from .html to .min.html
 		}))
-	.pipe(rename(function(path) {
-		path.extname = '.min.html' // change file extention from .html to .min.html
-	}))
-	.pipe(gulp.dest('./browser/js'))
-	.pipe(livereload()); // reload browser automatically
+		.pipe(gulp.dest('./browser/js'))
+		.pipe(livereload()); // reload browser automatically
 })
 
 /* Watch files to have gulp tasks run automatically when saved */
