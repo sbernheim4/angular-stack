@@ -35,7 +35,6 @@ gulp.task('buildJSProduction', function() {
 		.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
 });
 
-
 gulp.task('buildHTMLProduction', function() {
 	return gulp.src('./browser/js/**/*.template.html')
 		.pipe(htmlmin({collapseWhitespace: true, removecomments: true}))
