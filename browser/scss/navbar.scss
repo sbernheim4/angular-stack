@@ -1,0 +1,20 @@
+.navbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	div {
+		display: flex;
+
+		p {
+			padding: 30px;
+			cursor: pointer;
+		}
+	}
+
+	&__logo {
+	}
+
+	&__links {
+	}
+}
