@@ -6,7 +6,6 @@ app.directive('navbar', function($rootScope, $state) {
 		templateUrl: 'js/navbar/navbar.template.min.html',
 
 		link: function (scope) {
-
 			scope.someVar = "BLAHHHH IS SOME VAR";
 		}
 	};
