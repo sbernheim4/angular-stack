@@ -56,7 +56,7 @@ gulp.task('buildCSS', function () {
 	// The source scss file is a main file which just imports all the separate scss files
 	return gulp.src('./browser/scss/index.scss')
 		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
-		.pipe(cleanCSS()) // minify the css file
+		// .pipe(cleanCSS()) // minify the css file
 		.pipe(gulp.dest('./server/public/')) // write the css file to ./server
 		.pipe(livereload()); // reload browser automatically
 });
