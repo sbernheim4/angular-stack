@@ -24,6 +24,21 @@ app.config(function ($stateProvider) {
 
 'use strict';
 
+app.controller('AboutCtrl', function ($scope) {});
+
+'use strict';
+
+// Register a state called timer
+app.config(function ($stateProvider) {
+	$stateProvider.state('about-us', {
+		url: '/about-us',
+		templateUrl: 'js/about-us/about-us.template.min.html',
+		controller: 'AboutCtrl'
+	});
+});
+
+'use strict';
+
 app.controller('HomeCtrl', function ($scope) {});
 
 'use strict';

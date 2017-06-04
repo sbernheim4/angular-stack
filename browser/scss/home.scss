@@ -1,3 +1,6 @@
+$media-query-one: 1000px;
+$media-query-two: 900px;
+
 .home{
 
 	&__main {
@@ -8,22 +11,27 @@
 		align-items: center;
 
 		p {
-			font-size: 1.5em;
-			font-weight: bold;
-			color: rgb(88,88,91);
+
 		}
 	}
 
 	&__info {
-		height: 400px;
+		margin: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		@media all and (max-width: $media-query-two) {
+			flex-direction: column;
+		}
 
 		div {
-			width: 30%;
+			margin: 10px;
+			flex: 1;
 			display: flex;
 			text-align: center;
+			@media all and (max-width: $media-query-two) {
+				width: 100%;
+			}
 
 			flex-direction: column;
 			align-items: center;
@@ -41,17 +49,12 @@
 
 			p {
 				margin-bottom: 15px;
+				width: 80%;
 			}
 
 			button {
 				width: 150px;
 				height: 50px;
-				border: none;
-				border-radius: 5px;
-				background: rgb(248, 227, 147);
-				color: white;
-				font-size: 1em;
-				font-weight: bold;
 			}
 		}
 	}
@@ -61,7 +64,7 @@
 		display: flex;
 		justify-content: center;
 
-		@media all and (max-width: 1000px) {
+		@media all and (max-width: $media-query-one) {
 			margin: 0 auto;
 			max-width: 700px;
 			width: 90%;
@@ -72,7 +75,7 @@
 		div {
 			margin: 30px;
 			width: 50%;
-			@media all and (max-width: 1000px) {
+			@media all and (max-width: $media-query-one) {
 				width: 100%;
 				max-width: 700px;
 			}
@@ -91,7 +94,7 @@
 
 		hr {
 			display: none;
-			@media all and (max-width: 1000px) {
+			@media all and (max-width: $media-query-one) {
 				display: block;
 				width: 100%;
 				color: black;

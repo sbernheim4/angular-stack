@@ -4,6 +4,31 @@ gulp process */
   margin: 0;
   padding: 0; }
 
+div.main--section {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+h2.main--tag {
+  margin: 30px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #58585b; }
+
+button.standard-btn {
+  border: none;
+  border-radius: 5px;
+  background: #f8e393;
+  color: white;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color .3s;
+  text-transform: uppercase; }
+  button.standard-btn:hover {
+    background-color: black; }
+
 /* Import statements of other SCSS files */
 .home__main {
   width: 100vw;
@@ -11,36 +36,34 @@ gulp process */
   display: flex;
   justify-content: center;
   align-items: center; }
-  .home__main p {
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #58585b; }
 
 .home__info {
-  height: 400px;
+  margin: 30px;
   display: flex;
   justify-content: center;
   align-items: center; }
+  @media all and (max-width: 900px) {
+    .home__info {
+      flex-direction: column; } }
   .home__info div {
-    width: 30%;
+    margin: 10px;
+    flex: 1;
     display: flex;
     text-align: center;
     flex-direction: column;
     align-items: center;
     justify-content: center; }
+    @media all and (max-width: 900px) {
+      .home__info div {
+        width: 100%; } }
     .home__info div h3 {
       margin: 15px; }
     .home__info div p {
-      margin-bottom: 15px; }
+      margin-bottom: 15px;
+      width: 80%; }
     .home__info div button {
       width: 150px;
-      height: 50px;
-      border: none;
-      border-radius: 5px;
-      background: #f8e393;
-      color: white;
-      font-size: 1em;
-      font-weight: bold; }
+      height: 50px; }
 
 .home__testimonials {
   margin: 30px;
@@ -72,6 +95,22 @@ gulp process */
         width: 100%;
         color: black;
         background: black; } }
+
+.about-us .main--tag {
+  font-size: 2.25em;
+  font-weight: bold;
+  text-transform: uppercase; }
+
+.about-us .about-us__descriptions p {
+  margin: 15px auto;
+  max-width: 700px;
+  width: 80%;
+  line-height: 1.5em; }
+
+.about-us .about-us__descriptions button {
+  margin-top: 30px;
+  width: 170px;
+  height: 50px; }
 
 .navbar {
   display: flex;
