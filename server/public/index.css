@@ -1,1 +1,83 @@
-*{margin:0;padding:0}section.home{text-align:center}.navbar{display:flex;flex-direction:row;justify-content:space-between}.navbar div{display:flex}.navbar div p{padding:30px;cursor:pointer}
+/* Use this file to import all other scss files. This file gets compiled by a
+gulp process */
+* {
+  margin: 0;
+  padding: 0; }
+
+/* Import statements of other SCSS files */
+.home__main {
+  width: 100vw;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .home__main p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #58585b; }
+
+.home__info {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .home__info div {
+    width: 30%;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; }
+    .home__info div h3 {
+      margin: 15px; }
+    .home__info div p {
+      margin-bottom: 15px; }
+    .home__info div button {
+      width: 150px;
+      height: 50px;
+      border: none;
+      border-radius: 5px;
+      background: #f8e393;
+      color: white;
+      font-size: 1em; }
+
+.home__testimonials {
+  margin: 30px;
+  display: flex;
+  justify-content: center; }
+  @media all and (max-width: 1000px) {
+    .home__testimonials {
+      margin: 0 auto;
+      max-width: 700px;
+      width: 90%;
+      flex-direction: column;
+      align-items: center; } }
+  .home__testimonials div {
+    margin: 30px;
+    width: 50%; }
+    @media all and (max-width: 1000px) {
+      .home__testimonials div {
+        width: 100%;
+        max-width: 700px; } }
+    .home__testimonials div p {
+      line-height: 1.4em; }
+      .home__testimonials div p span {
+        font-style: italic; }
+  .home__testimonials hr {
+    display: none; }
+    @media all and (max-width: 1000px) {
+      .home__testimonials hr {
+        display: block;
+        width: 100%;
+        color: black;
+        background: black; } }
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  .navbar div {
+    display: flex; }
+    .navbar div p {
+      padding: 30px;
+      cursor: pointer; }
