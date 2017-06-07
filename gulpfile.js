@@ -8,6 +8,7 @@ const ngAnnotate = require('gulp-ng-annotate');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
+const gulpStylelint = require('gulp-stylelint');
 
 /* NOTE: This requires a chrome extention to work properly:
  * https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
@@ -48,6 +49,14 @@ gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buil
 
 /**********************************************************/
 
+gulp.task('lintCSS', function() {
+	return gulp.src('./browser/scss/*.scss')
+		.pipe(gulpStylelint({
+			reporters: [
+				{formatter: 'string', console: true}
+			]
+		}));
+});
 
 /**********************************************************/
 /* Development Builds */
@@ -87,9 +96,9 @@ gulp.task('buildHTML', function() {
 /* Watch files to have gulp tasks run automatically when saved */
 gulp.task('watch', function() {
 	livereload.listen(); // reload browser automatically on save
-	gulp.watch('./browser/scss/*', ['buildCSS']);
-	gulp.watch('./browser/js/**/*.js', ['buildJS']);
-	gulp.watch('./browser/js/**/*.html', ['buildHTML'])
+	gulp.watch('./browser/scss/*', ['buildCSS', 'lintCSS']);
+	gulp.watch('./browser/js/**/*.js', ['buildJS'])
+	gulp.watch('./browser/js/**/*.html', ['buildHTML']);
 });
 
 /*
@@ -98,4 +107,4 @@ gulp.task('watch', function() {
  * Run buildCSS and buildJS so the app is built/updated without requiring a save
  * in one of the watched files to run the same tasks
  */
-gulp.task('default', ['buildHTML', 'buildCSS', 'buildJS', 'watch']);
+gulp.task('default', ['buildHTML', 'buildCSS', 'buildJS', 'watch', 'lintCSS']);
