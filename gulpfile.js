@@ -1,6 +1,8 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
@@ -23,6 +25,7 @@ const livereload = require('gulp-livereload');
 gulp.task('buildCSSProduction', () => {
 	return gulp.src('./browser/scss/index.scss')
 		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
+		.pipe(postcss([autoprefixer({browsers: ['> 1%']})]))
 		.pipe(cleanCSS()) // minify the css file
 		.pipe(gulp.dest('./server/public/')) // write the css file to ./server
 });

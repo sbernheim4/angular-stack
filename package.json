@@ -1,53 +1,55 @@
 {
-	"name": "angular-stack",
-	"description": "My angular stack",
-	"version": "1.0.0",
-	"author": "Samuel Bernheim",
-	"bugs": {
-		"url": "https://github.com/sbernheim4/angular-stack/issues"
-	},
-	"dependencies": {
-		"chalk": "^1.1.3",
-		"compression": "^1.6.2",
-		"express": "^4.14.0",
-		"gulp": "^3.9.1",
-		"gulp-babel": "^6.1.2",
-		"gulp-clean-css": "^2.4.0",
-		"gulp-concat": "^2.6.1",
-		"gulp-eslint": "^3.0.1",
-		"gulp-htmlmin": "^3.0.0",
-		"gulp-livereload": "^3.8.1",
-		"gulp-ng-annotate": "^2.0.0",
-		"gulp-rename": "^1.2.2",
-		"gulp-sass": "^3.1.0",
-		"gulp-sourcemaps": "^2.4.1",
-		"gulp-stylelint": "^3.9.0",
-		"gulp-uglify": "^2.0.1",
-		"nodemon": "^1.11.0",
-		"path": "^0.12.7",
-		"stylelint-order": "^0.4.4"
-	},
-	"devDependencies": {
-		"pre-commit": "^1.2.2"
-	},
-	"engines": {
-		"node": "6.9.4"
-	},
-	"homepage": "https://github.com/sbernheim4/angular-stack#readme",
-	"license": "ISC",
-	"main": "server/index.js",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/sbernheim4/angular-stack.git"
-	},
-	"pre-commit": [
-		"print-info",
-		"test"
-	],
-	"scripts": {
-		"postinstall": "gulp buildProduction",
-		"start": "nodemon server/index.js",
-		"test": "gulp lintCSS && gulp lintJS",
-		"print-info": "gulp print-lint"
-	}
+  "name": "angular-stack",
+  "description": "My angular stack",
+  "version": "1.0.0",
+  "author": "Samuel Bernheim",
+  "bugs": {
+    "url": "https://github.com/sbernheim4/angular-stack/issues"
+  },
+  "dependencies": {
+    "autoprefixer": "^7.1.1",
+    "chalk": "^1.1.3",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-stylelint": "^3.9.0",
+    "gulp-uglify": "^2.0.1",
+    "nodemon": "^1.11.0",
+    "path": "^0.12.7",
+    "stylelint-order": "^0.4.4"
+  },
+  "devDependencies": {
+    "pre-commit": "^1.2.2"
+  },
+  "engines": {
+    "node": "6.9.4"
+  },
+  "homepage": "https://github.com/sbernheim4/angular-stack#readme",
+  "license": "ISC",
+  "main": "server/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sbernheim4/angular-stack.git"
+  },
+  "pre-commit": [
+    "print-info",
+    "test"
+  ],
+  "scripts": {
+    "postinstall": "gulp buildProduction",
+    "start": "nodemon server/index.js",
+    "test": "gulp lintCSS && gulp lintJS",
+    "print-info": "gulp print-lint"
+  }
 }
