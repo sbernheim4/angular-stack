@@ -8,7 +8,9 @@ const ngAnnotate = require('gulp-ng-annotate');
 const uglify = require('gulp-uglify');
 const htmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
+const eslint = require('gulp-eslint');
 const gulpStylelint = require('gulp-stylelint');
+const chalk = require('chalk');
 
 /* NOTE: This requires a chrome extention to work properly:
  * https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
@@ -18,14 +20,14 @@ const livereload = require('gulp-livereload');
 /**********************************************************/
 /* Production Builds */
 
-gulp.task('buildCSSProduction', function () {
+gulp.task('buildCSSProduction', () => {
 	return gulp.src('./browser/scss/index.scss')
 		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
 		.pipe(cleanCSS()) // minify the css file
 		.pipe(gulp.dest('./server/public/')) // write the css file to ./server
 });
 
-gulp.task('buildJSProduction', function() {
+gulp.task('buildJSProduction', () => {
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
 		.pipe(sourcemaps.init()) // use sourcemaps
 		.pipe(concat('main.js')) // write all the files to a single file called main.js
@@ -36,7 +38,7 @@ gulp.task('buildJSProduction', function() {
 		.pipe(gulp.dest('./server/public')) // write the result of this to ./server/public
 });
 
-gulp.task('buildHTMLProduction', function() {
+gulp.task('buildHTMLProduction', () => {
 	return gulp.src('./browser/js/**/*.template.html')
 		.pipe(htmlmin({collapseWhitespace: true, removecomments: true}))
 		.pipe(rename(function(path) {
@@ -49,7 +51,14 @@ gulp.task('buildProduction', ['buildHTMLProduction', 'buildCSSProduction', 'buil
 
 /**********************************************************/
 
-gulp.task('lintCSS', function() {
+gulp.task('lintJS', () => {
+	return gulp.src('./browser/js/**/*.js')
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
+});
+
+gulp.task('lintCSS', () => {
 	return gulp.src('./browser/scss/*.scss')
 		.pipe(gulpStylelint({
 			reporters: [
@@ -58,10 +67,16 @@ gulp.task('lintCSS', function() {
 		}));
 });
 
+
+gulp.task('print-lint', () => {
+	console.log(chalk.green('\t----------------------'));
+	console.log(chalk.green('\t|       Linting      |'));
+	console.log(chalk.green('\t----------------------'));
+});
 /**********************************************************/
 /* Development Builds */
 
-gulp.task('buildCSS', function () {
+gulp.task('buildCSS', () => {
 	// The source scss file is a main file which just imports all the separate scss files
 	return gulp.src('./browser/scss/index.scss')
 		.pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
@@ -70,7 +85,7 @@ gulp.task('buildCSS', function () {
 		.pipe(livereload()); // reload browser automatically
 });
 
-gulp.task('buildJS', function() {
+gulp.task('buildJS', () => {
 	return gulp.src(['./browser/js/app.js', './browser/js/**/*.js'])
 		.pipe(concat('main.js')) // write all the files to a single file called main.js
 		.pipe(babel()) // run babel to use ES6 syntax
@@ -78,7 +93,7 @@ gulp.task('buildJS', function() {
 		.pipe(livereload()); // reload browser automatically
 });
 
-gulp.task('buildHTML', function() {
+gulp.task('buildHTML', () => {
 	// Need the .template.html since using just .html would then create a new
 	// file on each save
 	return gulp.src('./browser/js/**/*.template.html')
@@ -86,7 +101,7 @@ gulp.task('buildHTML', function() {
 			{
 				removeComments: true      // remove comments
 			}))
-		.pipe(rename(function(path) {
+		.pipe(rename( (path) => {
 			path.extname = '.min.html' // change file extention from .html to .min.html
 		}))
 		.pipe(gulp.dest('./browser/js'))
@@ -94,7 +109,7 @@ gulp.task('buildHTML', function() {
 })
 
 /* Watch files to have gulp tasks run automatically when saved */
-gulp.task('watch', function() {
+gulp.task('watch', () => {
 	livereload.listen(); // reload browser automatically on save
 	gulp.watch('./browser/scss/*', ['buildCSS', 'lintCSS']);
 	gulp.watch('./browser/js/**/*.js', ['buildJS'])
