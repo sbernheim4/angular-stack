@@ -1,4 +1,4 @@
-#Installation
+# Installation
 
 1. Clone the repo and `cd` into it
 2. Run `npm install`
@@ -8,9 +8,10 @@
 
 Note: For live reload functionality install the chrome extension:
 https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
+
 Make sure the extension is running. The small circle of the chrome extension should be filled in when running. Click on it to turn it on and off
 
-#What is this Repo
+# What is this Repo
 
 This repo is an easy and quick way to get an angular website running. It uses AngularJS and its UI-Router for the front end and NodeJS/ExpressJS for the backend.
 Gulp is used to compile SCSS, transpile ES6 JS and minify it along with HTML and allow for livereloading.
