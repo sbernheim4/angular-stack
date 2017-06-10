@@ -8,7 +8,7 @@
 		"declaration-colon-space-after": "always",
 		"indentation": "tab",
 		"max-empty-lines": 2,
-		"unit-whitelist": ["em", "rem", "%", "s", "px", "vw", "vh"],
-		"order/properties-order": ["margin", "margin-top", "margin-right", "margin-bottom", "margin-left", "max-width", "width", "min-width", "max-height", "height", "min-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "flex", "flex-direction", "justify-content", "align-items", "flex-wrap", "flex"]
+		"unit-whitelist": ["em", "%", "px", "vw", "vh", "s"],
+		"order/properties-order": ["position", "margin", "margin-top", "margin-right", "margin-bottom", "margin-left", "max-width", "width", "min-width", "max-height", "height", "min-height", "padding", "padding-top", "padding-right", "padding-bottom", "padding-left", "background", "background-color", "background-image", "border", "border-radius", "font-size", "text-transform", "color", "cursor", "transition", "flex", "flex-direction", "justify-content", "align-items", "flex-wrap", "flex"]
 	}
 }
