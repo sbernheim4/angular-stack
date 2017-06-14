@@ -30,6 +30,7 @@
     "stylelint-order": "^0.4.4"
   },
   "devDependencies": {
+    "gulp-purifycss": "^0.2.0",
     "pre-commit": "^1.2.2"
   },
   "engines": {

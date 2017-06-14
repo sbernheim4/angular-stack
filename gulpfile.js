@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
+const purify = require('gulp-purifycss');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const sourcemaps = require('gulp-sourcemaps');
@@ -25,6 +26,7 @@ const livereload = require('gulp-livereload');
 gulp.task('buildCSSProduction', () => {
     return gulp.src('./browser/scss/index.scss')
         .pipe(sass().on('error', sass.logError)) // compile the sass file to a css file
+        .pipe(purify(['./browser/js/**/*.min.html'])) // Remove unused css --> Must be before autoprefixer since that adds in a lot of extra CSS that might not be used
         .pipe(postcss([autoprefixer({browsers: ['> 1%']})]))
         .pipe(cleanCSS()) // minify the css file
         .pipe(gulp.dest('./server/public/')) // write the css file to ./server
