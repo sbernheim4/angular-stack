@@ -1,1 +1,1 @@
-*{margin:0;padding:0}section.home{text-align:center}.navbar{display:-webkit-box;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:normal;flex-direction:row;-webkit-box-pack:justify;justify-content:space-between}.navbar div{display:-webkit-box;display:flex}.navbar div p{padding:30px;cursor:pointer}
+*{margin:0;padding:0}section.home{text-align:center}.navbar{display:flex;flex-direction:row;justify-content:space-between}.navbar div{display:flex}.navbar div p{padding:30px;cursor:pointer}
