@@ -109,10 +109,10 @@ gulp.task('buildHTML', () => {
 })
 
 gulp.task('browser-sync', () => {
-	browserSync({
+	browserSync.init({
 		proxy: `localhost:1337`,  // local node app address --> Confgirued in ./server/index.js
-		port: 5000,  // use *different* port than above --> Use this port for the actual url in the browser
-		notify: true
+		port: 5000  // use *different* port than above --> Use this port for the actual url in the browser
+		/*notify: true*/
 	});
 });
 
