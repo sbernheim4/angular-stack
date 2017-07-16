@@ -22,19 +22,6 @@ app.config(function ($stateProvider) {
 	});
 });
 
-app.directive('navbar', function ($rootScope, $state) {
-
-	return {
-		restrict: 'E',
-		scope: {},
-		templateUrl: 'js/navbar/navbar.template.min.html',
-
-		link: function (scope) {
-			scope.someVar = "BLAHHHH IS SOME VAR";
-		}
-	};
-});
-
 'use strict';
 
 app.controller('HomeCtrl', function ($scope) {});
@@ -48,4 +35,17 @@ app.config(function ($stateProvider) {
 		templateUrl: 'js/home/home.template.min.html',
 		controller: 'HomeCtrl'
 	});
+});
+
+app.directive('navbar', function ($rootScope, $state) {
+
+	return {
+		restrict: 'E',
+		scope: {},
+		templateUrl: 'js/navbar/navbar.template.min.html',
+
+		link: function (scope) {
+			scope.someVar = "BLAHHHH IS SOME VAR";
+		}
+	};
 });
