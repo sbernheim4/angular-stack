@@ -8,7 +8,11 @@
 		"angular": true,
 		"$scope": true,
 		"scope": true,
-		"$state": true
+		"$state": true,
+		"require": true,
+		"process": true,
+		"__dirname": true,
+		"console": true
 	},
 
 	"rules": {

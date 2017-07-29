@@ -1,15 +1,10 @@
+
 # Installation
 
 1. Clone the repo and `cd` into it
 2. Run `npm install`
 3. Run `npm start` in one terminal tab
-4. Run `gulp` in another terminal tab
-5. Go to `localhost:1337` in your broswer (Google Chrome for live reload functionality --> See note below)
-
-Note: For live reload functionality install the chrome extension:
-https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei
-
-Make sure the extension is running. The small circle of the chrome extension should be filled in when running. Click on it to turn it on and off
+4. Run `gulp` in another terminal tab --> This should open up the site in your web browser
 
 # What is this Repo
 

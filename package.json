@@ -50,6 +50,6 @@
   "scripts": {
     "postinstall": "gulp buildProduction",
     "start": "nodemon server/index.js",
-    "test": "gulp lint"
+    "lint": "gulp lint"
   }
 }
