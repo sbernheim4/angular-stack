@@ -1,9 +1,11 @@
 'use strict';
 
+require('dotenv').config()
 const path = require('path');
 const chalk = require('chalk');
 const express = require('express');
 const app = express();
+const MongoClient = require('mongodb').MongoClient;
 
 const port = process.env.PORT || 1337;
 
@@ -15,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * html template files must be served statically so that they can be accessed
  * by the browser on a GET request
  */
- app.use(express.static(path.join(__dirname, '../browser/')));
+app.use(express.static(path.join(__dirname, '../browser/')));
 
 // For any get request return the index.html file
 app.get('/*', function (req, res) {
@@ -31,7 +33,20 @@ app.get('/*', function (req, res) {
 	res.sendFile(path.join(__dirname, '/index.html'));
 });
 
-// Listen on the port for incoming requests
-app.listen(port, function() {
-	console.log('Listening to port:', port);
+let db;
+const url = process.env.DB_URI;
+
+MongoClient.connect(url, (err, database) => {
+
+	if (err) {
+		console.log(err);
+	} else {
+		console.log(chalk.blue(`Connected to database`));
+		db = database;
+
+		app.listen(port, () => {
+			// start the server upon successful connection to mongodb
+			console.log(`Listening on port: ${port}`);
+		});
+	}
 });
