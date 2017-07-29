@@ -8,9 +8,7 @@
 
 # What is this Repo
 
-This repo is an easy and quick way to get an angular website running. It uses AngularJS and its UI-Router for the front end and NodeJS/ExpressJS for the backend.
-Gulp is used to compile SCSS, transpile ES6 JS and minify it along with HTML and allow for livereloading.
-It is essientially, a very simple version of the MEAN stack without MongoDB.
+This repo is an easy and quick way to get an angular website running. It uses AngularJS and its UI-Router for the front end and NodeJS/ExpressJS for the backend. Gulp is used to compile SCSS, transpile ES6 JS and minify it along with HTML and allow for livereloading. The mongodb is set up using the dotenv npm package and a .env file at the root of your project. Inside the .env file just add the text `DB_URI=<LINK_TO_DB>` replacing `<LINK_TO_DB>` with the uri provided by the host of your database (mlab docs for more reference http://docs.mlab.com/connecting/#connect-string). 
 
 # File Structure
 
