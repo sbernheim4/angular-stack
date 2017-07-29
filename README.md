@@ -33,4 +33,5 @@ Below is the file structure for this stack. Each state goes in its own folder, a
 |------|---index.js --> (runs the ExpressJS server)
 |------gulpfile.js
 |------package.json
+|------.env --> a file to declare your environmental variables
 ```
